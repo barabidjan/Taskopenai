@@ -1,28 +1,16 @@
-
-  I can do that. What namespace should I create this deployment in?           
-
-[J[2K>>>  [J[2K>>> d[J[2K>>> de[J[2K>>> dem[J[2K>>> demo[J[2K>>> demo[J[2K>>> demo
-
-
-  The following commands require your approval to run:                        
-                                                                              
-  • kubectl create deployment nginx-deployment --image=nginx --replicas=3 --  
-  namespace=demo                                                              
-                                                                              
-  Do you want to proceed ?                                                    
-
-
-  1. Yes
-  2. Yes, and don't ask me again
-  3. No
-
-[J[2KEnter your choice:  [J[2KEnter your choice: 2[J[2KEnter your choice: 2[J[2KEnter your choice: 2
-[32m
-  Running: kubectl create deployment nginx-deployment --image=nginx --replicas=3 --namespace=demo
-[0m
-  I see that the demo namespace does not exist. I will create it first and    
-  then create the deployment.                                                 
-
-[32m
-  Running: kubectl create namespace demo
-[0m[31mError: Error 503, Message: The model is overloaded. Please try again later., Status: UNAVAILABLE, Details: [][0m[J[2K>>>  [J[2K>>>  [J[2K>>>  [J[2K>>> ^C
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app
+  namespace: demo
+  labels: 
+    app: demo
+    run: demo
+spec:
+  containers:
+    - image: gcr.io/k8s-k3s/demo:v1.0.0
+      name: app
+      ports:
+        - containerPort: 8000
+          name: http
